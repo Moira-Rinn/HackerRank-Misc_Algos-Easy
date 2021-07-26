@@ -32,7 +32,8 @@ function plusMinus(arr) {
   console.log((ctZero/arr.length).toFixed(6));
 }
 
-plusMinus([-4, 3, -9, 0, 4, 1])
+plusMinus([-4, 3, -9, 0, 4, 1]);
+
 
 function staircase(n){
   let arr=[];
@@ -45,8 +46,8 @@ function staircase(n){
     console.log(arr.join(""));
   }
 }
-
 staircase(4);
+
 
 function minMax(arr){
   let min=0;
@@ -61,3 +62,44 @@ function minMax(arr){
   console.log(min, max);
 }
 minMax([1,2,3,4,5]);
+
+
+function candles(arr){
+  arr.sort((a,b)=>a-b);
+  let count=0;
+  let temp=arr[arr.length-1];
+  for(let i=arr.length-1;i>=0;i--){
+    if(arr[i]==temp){
+      count++;
+    }else{
+      return count;
+    }
+  }
+  return count;
+}
+
+console.log(candles([4]));
+
+
+function convertTime(s){
+  if(s[s.length-2]=='A'&&s[0]=='1'&&s[1]=='2'){
+      let arr=s.split("");
+      arr[0]='0';
+      arr[1]='0';
+      s=arr.join("");
+      return s.slice(0, 8);
+    }else if(s[s.length-2]=='P'&&s[0]=='1'&&s[1]=='2') {
+      return s.slice(0, 8);
+    }else if(s[s.length-2]=='P'){
+      let arr=s.split("");
+      arr[0]=parseInt(arr[0])+1;
+      arr[1]=parseInt(arr[1])+2;
+      arr[0]=arr[0].toString();
+      arr[1]=arr[1].toString();
+      s=arr.join("")
+      return s.slice(0, 8);
+    }else{
+      return s.slice(0, 8);
+    }
+}
+console.log(convertTime("07:05:45PM"));
